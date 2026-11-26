@@ -62,10 +62,3 @@ No `npm install` needed — Node 20+ has everything built in.
 **I kept saved jobs in a separate `saved-jobs.json` file instead of adding a `saved` field to each job in `jobs.json`.**
 
 Reason: the original `jobs.json` is the "source of truth" for job listings — it's static data that shouldn't change. Mixing user-specific state (which jobs *this person* saved) into that file would conflate two different things. A separate file keeps concerns clean: `jobs.json` = job catalog, `saved-jobs.json` = user's bookmarks. It also makes it trivial to reset saved jobs without touching the job data, and the file stays small since it only stores IDs like `["j1", "j3"]`.
-
-## What I'd do next
-
-- Add a visual indicator on the main list showing which jobs are already saved (so you don't accidentally click Save twice)
-- Persist saved jobs in `localStorage` as a backup, so the UI feels instant even before the server responds
-- Add a "Saved only" filter toggle to show just your bookmarked jobs
-- If this were real, I'd add user accounts so saved jobs are per-user instead of global — right now everyone shares the same saved list
